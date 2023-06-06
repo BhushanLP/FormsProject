@@ -1,0 +1,16 @@
+li  {
+    display: inline;
+    margin-top: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+a{
+    list-style-type: none;
+    text-decoration: none;
+
+
+}
+
+
+ 
