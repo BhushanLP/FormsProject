@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./template-sample.component.css']
 })
 export class TemplateSampleComponent {
+   states = ["Andhra Pradesh","Assam","Bihar","Chhattisgarh","Goa"];
+
+   user={fname:'Bhushan',lname:'Paradkar'}
+
+  submitHandler(myForm: any){
+    console.log("form values status---->",myForm)
+    console.log("form values---->",myForm.value)
+  }
 
 }

@@ -1,9 +1,9 @@
 footer {    
     padding: 20px;
-    color:#ccc;
+    color:#080808;
     display: flex;
     /* background-color: #333; */
     justify-content: center;
-    background-color: #ec8383;
+    /* background-color: #ec8383; */
 
 }

@@ -9,6 +9,7 @@ import { FormsComponent } from './forms/forms.component';
 import { NestedFormComponent } from './forms/nested-form/nested-form.component';
 import { ReactiveSampleComponent } from './forms/reactive-sample/reactive-sample.component';
 import { TemplateSampleComponent } from './forms/template-sample/template-sample.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { TemplateSampleComponent } from './forms/template-sample/template-sample
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

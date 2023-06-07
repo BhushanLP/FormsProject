@@ -1,1 +1,67 @@
-<p>nested-form works!</p>
+<form class="row g-3" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">First Name</label>
+        <input formControlName="firstName" type="text" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Last Name</label>
+        <input formControlName="lastName" type="text" class="form-control" id="inputPassword4">
+    </div>
+
+    <div class="row" formGroupName="address">
+
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Address1</label>
+            <input formControlName="address1" type="text" class="form-control" id="inputAddress"
+                placeholder="1234 Main St" required>
+        </div>
+
+
+        <div class="col-12 p-3">
+            <label class="form-check-label pe-5">Choose Type</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="addressType" name="addressType"
+                    id="inlineRadio1" value="Correspondance">
+                <label class="form-check-label" for="inlineRadio1">Correspondance</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="addressType" name="addressType"
+                    id="inlineRadio2" value="Parmananat">
+                <label class="form-check-label" for="inlineRadio2">Parmananat</label>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputState" class="form-label">State</label>
+            <select formControlName="state" id="inputState" class="form-select">
+                <option selected>Choose...</option>
+                <option *ngFor="let state of states">{{state}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input formControlName="zip" type="text" class="form-control" id="inputZip">
+        </div>
+        
+    </div>
+    <div class="col-md-6 p-2" formArrayName="mobile">
+        <button class="btn btn-secondary m-2" (click)="addNewMobile()">Add new Mobile</button>
+        <div *ngFor="let mob of mobile.controls ,index as i">
+
+            <label for="inputZip" class="form-label">Mobile{{i+1}}</label>
+            <input [formGroupName]="i" type="text" class="form-control" id="inputZip">
+        </div>
+    </div>
+
+    <!-- <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Check me out
+        </label>
+      </div>
+    </div> -->
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

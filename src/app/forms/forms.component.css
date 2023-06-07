@@ -2,9 +2,8 @@
     display: flex;
     justify-content: center;    
     padding: 20px;
-    background-color: #e4b3b3;
-
-    background-image: linear-gradient(red, rgb(243, 169, 169));
+    /* background-color: #e4b3b3; */
+    /* background-image: linear-gradient(red, rgb(243, 169, 169)); */
       
 
 }
