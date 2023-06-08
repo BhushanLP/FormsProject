@@ -44,14 +44,25 @@
         </div>
         
     </div>
-    <div class="col-md-6 p-2" formArrayName="mobile">
-        <button class="btn btn-secondary m-2" (click)="addNewMobile()">Add new Mobile</button>
-        <div *ngFor="let mob of mobile.controls ,index as i">
 
-            <label for="inputZip" class="form-label">Mobile{{i+1}}</label>
-            <input [formGroupName]="i" type="text" class="form-control" id="inputZip">
+    <!-- FormArray -->
+    <div class="col align-self-end">
+        <button class="btn btn-secondary m-2" (click)="addNewMobile()">Add new Mobile</button>
+    </div>
+    <div class="row">
+        <!-- <div class="col-md-4 bg-success"> <p>ghfhf</p></div> -->
+        <div class="col-md-8 p-2" formArrayName="mobile">
+            <div *ngFor="let mob of userForm.controls.mobile.controls; index as i">
+                <label for="inputZip" class="form-label">Mobile{{i+1}}</label>
+                <input [formControlName]="i" type="text" class="form-control" id="inputZip">
+                <!-- <input formControlName="mobile" type="text" class="form-control" id="inputZip"> -->
+            </div>
+        </div>
+        <div class="col-md-4 "><button class="btn btn-secondary" (click)="resetVal()">Reset</button>
         </div>
     </div>
+
+ 
 
     <!-- <div class="col-12">
       <div class="form-check">
@@ -65,3 +76,28 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
+
+
+
+
+<!-- Your form -->
+<form [formGroup]="beneficiaryForm">
+    <div formArrayName="beneficiaries">
+      <div *ngFor="let beneficiary of beneficiaries.controls; let i = index">
+        <div [formGroupName]="i">
+          <label>Name</label>
+          <input formControlName="name" type="text" />
+  
+          <label>Age</label>
+          <input formControlName="age" type="text" />
+  
+          <label>Relationship</label>
+          <input formControlName="relationship" type="text" />
+  
+          <button (click)="removeBeneficiary(i)">Remove</button>
+        </div>
+      </div>
+    </div>
+  
+    <button (click)="addBeneficiary()">Add Beneficiary</button>
+  </form>

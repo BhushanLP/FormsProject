@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
   templateUrl: './nested-form.component.html',
   styleUrls: ['./nested-form.component.css']
 })
-export class NestedFormComponent {
+export class NestedFormComponent implements OnInit{
 
   states = ["Andhra Pradesh","Assam","Bihar","Chhattisgarh","Goa"];
 
@@ -35,16 +35,16 @@ userForm = this.fb.group({
     }),
   
     mobile : this.fb.array([
-    // this.fb.control('')
+    this.fb.control('')
   ])
 })
 
 
 counter : number | undefined ;
 
-get mobile(){
-  return this.userForm.controls[('mobile')] as FormArray;
-}
+// get mobile(){
+//   return this.userForm.controls[('mobile')] as FormArray;
+// }
 
 onSubmit() {
   console.warn("on submitting form",this.userForm);
@@ -60,9 +60,40 @@ onSubmit() {
 
 
 addNewMobile() {
- this.mobile.push(new FormControl(""))
+ this.userForm.controls[('mobile')].push(new FormControl(""))
+}
+resetVal() {
+ this.userForm.controls[('mobile')].patchValue(['','','',''])
+ 
 }
 
+beneficiaryForm!: FormGroup ;
+
+
+
+ngOnInit() {
+  this.beneficiaryForm = this.fb.group({
+    beneficiaries: this.fb.array([])
+  });
+}
+
+get beneficiaries(): FormArray {
+  return this.beneficiaryForm.get('beneficiaries') as FormArray;
+}
+
+addBeneficiary() {
+  const beneficiary = this.fb.group({
+    name: [''],
+    age: [''],
+    relationship: ['']
+  });
+
+  this.beneficiaries.push(beneficiary);
+}
+
+removeBeneficiary(index: number) {
+  this.beneficiaries.removeAt(index);
+}
 
 
 }

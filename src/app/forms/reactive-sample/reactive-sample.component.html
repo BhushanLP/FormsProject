@@ -1,1 +1,33 @@
 <p>reactive-sample works!</p>
+<form class="row g-3" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">First Name</label>
+        <input formControlName="firstName" type="text" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Last Name</label>
+        <input formControlName="lastName" type="text" class="form-control" id="inputPassword4">
+    </div>
+    <!-- FormArray -->
+    <!-- <div class="col align-self-end">
+        <button class="btn btn-secondary m-2" (click)="addNewPerson()">Add New Person</button>
+        </div>
+    <div class="row">
+        <div class="col-md-8 p-2" formArrayName="mobile">
+            <div *ngFor="let mob of userForm.controls; index as i">
+                <label for="inputZip" class="form-label">Mobile{{i+1}}</label>
+                <input [formControlName]="i" type="text" class="form-control" id="inputZip">
+            </div>
+        </div>
+       
+    </div> -->
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+
+
+
+
+  
