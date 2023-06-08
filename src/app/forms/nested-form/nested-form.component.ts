@@ -63,7 +63,8 @@ addNewMobile() {
  this.userForm.controls[('mobile')].push(new FormControl(""))
 }
 resetVal() {
- this.userForm.controls[('mobile')].patchValue(['','','',''])
+//  this.userForm.controls[('mobile')].patchValue(['','','',''])
+this.userForm.controls[('mobile')].reset()
  
 }
 
