@@ -10,6 +10,8 @@ import { NestedFormComponent } from './forms/nested-form/nested-form.component';
 import { ReactiveSampleComponent } from './forms/reactive-sample/reactive-sample.component';
 import { TemplateSampleComponent } from './forms/template-sample/template-sample.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TableComponent } from './table/table.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsComponent,
     NestedFormComponent,
     ReactiveSampleComponent,
-    TemplateSampleComponent
+    TemplateSampleComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
