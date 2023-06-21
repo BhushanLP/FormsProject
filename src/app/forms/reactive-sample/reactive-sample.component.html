@@ -1,33 +1,51 @@
-<p>reactive-sample works!</p>
+<!-- FormArray -->
+
 <form class="row g-3" [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">First Name</label>
-        <input formControlName="firstName" type="text" class="form-control">
-    </div>
-    <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Last Name</label>
-        <input formControlName="lastName" type="text" class="form-control" id="inputPassword4">
-    </div>
-    <!-- FormArray -->
-    <!-- <div class="col align-self-end">
-        <button class="btn btn-secondary m-2" (click)="addNewPerson()">Add New Person</button>
-        </div>
-    <div class="row">
-        <div class="col-md-8 p-2" formArrayName="mobile">
-            <div *ngFor="let mob of userForm.controls; index as i">
-                <label for="inputZip" class="form-label">Mobile{{i+1}}</label>
-                <input [formControlName]="i" type="text" class="form-control" id="inputZip">
+    <!-- array -->
+    <div class="col-12 p-3" formArrayName="nominee">
+        <div *ngFor="let newNominee of nominee.controls let i = index">
+            <div [formGroupName]="i">
+                <h5>Nominee-{{i+1}}</h5>
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">First Name</label>
+                    <input formControlName="firstName" type="text" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Last Name</label>
+                    <input formControlName="lastName" type="text" class="form-control">
+                </div>
+                <!-- group -->
+                <div class="row" formGroupName="address" >
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Add1</label>
+                            <input formControlName="add1" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Add2</label>
+                            <input formControlName="add2" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-success m-2" (click)="addNominee()">+</button>
+                            <button type="button" class="btn btn-danger m-2" (click)="deleteNominee(i)" *ngIf="i!=0">-</button>
+                        </div>
+                    </div>
+                    
+
+                </div>
             </div>
+                    
         </div>
-       
-    </div> -->
-    <div class="col-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
+                
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>     
+                    </div>
+            
+
     </div>
+
 </form>
 
 
-
-
-
-  

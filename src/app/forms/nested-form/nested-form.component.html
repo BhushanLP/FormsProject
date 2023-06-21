@@ -4,9 +4,49 @@
         <input formControlName="firstName" type="text" class="form-control">
     </div>
     <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Adhaar</label>
+        <input formControlName="adhaar" type="text" class="form-control">
+      <!-- Adhaar Validation -->
+                <div style="color:red" 
+                *ngIf="userForm.controls['adhaar'].invalid 
+                && (userForm.controls['adhaar'].touched || userForm.controls['adhaar'].dirty)">
+                <div *ngIf="userForm.controls['adhaar'].errors?.['required']">
+                    Please enter Adhaar Number
+                </div>
+                <div *ngIf="userForm.controls['adhaar'].errors?.['pattern']">
+                    Adhaar should have 12 digits & have white space after every 4 digits.
+                    alphabet,special characters not allowed & It should not start with 0 and 1.
+                </div>
+            </div>    
+    </div>
+    <div class="col-md-6">
         <label for="inputPassword4" class="form-label">Last Name</label>
         <input formControlName="lastName" type="text" class="form-control" id="inputPassword4">
     </div>
+
+
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">PAN</label>
+        <input formControlName="pan" type="text" class="form-control">
+
+
+      <!-- Validation pan -->
+                <div style="color:red" 
+                *ngIf="userForm.controls['pan'].invalid 
+                && (userForm.controls['pan'].touched || userForm.controls['pan'].dirty)">
+                <div *ngIf="userForm.controls['pan'].errors?.['required']">
+                    Please enter Pan Number
+                </div>
+                <div *ngIf="userForm.controls['pan'].errors?.['pattern']">
+                    It should be ten characters long.
+                    The first five characters should be any upper case alphabets.
+                    The next four-characters should be any number from 0 to 9.
+                    The last(tenth) character should be any upper case alphabet.
+                    It should not contain any white spaces.
+                </div>
+            </div>    
+    </div>
+
 
     <div class="row" formGroupName="address">
 
@@ -103,3 +143,11 @@
   
     <button (click)="addBeneficiary()">Add Beneficiary</button>
   </form>
+
+
+
+
+
+
+
+  

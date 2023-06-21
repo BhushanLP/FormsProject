@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-nested-form',
@@ -8,7 +8,11 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class NestedFormComponent implements OnInit{
 
+  // regex:string = “^[2-9]{1}[0-9]{3}\\s[0-9]{4}\\s[0-9]{4}$”;
+
   states = ["Andhra Pradesh","Assam","Bihar","Chhattisgarh","Goa"];
+
+  
 
   constructor(private fb:FormBuilder){}
 
@@ -27,6 +31,9 @@ export class NestedFormComponent implements OnInit{
 userForm = this.fb.group({
   firstName : [''],
   lastName : [''],
+  // adhaar : ['',[Validators.required,Validators.pattern(/^[2-9]{1}[0-9]{3}\\s[0-9]{4}\\s[0-9]{4}$/)]],
+  adhaar : ['',[Validators.required,Validators.pattern(/^[2-9]{1}[0-9]{3}\s[0-9]{4}\s[0-9]{4}$/)]],
+  pan : ['',[Validators.required,Validators.pattern(/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/)]],
     address : this.fb.group({
       address1 : [''],
       addressType : [''],
