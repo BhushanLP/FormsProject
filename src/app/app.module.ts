@@ -12,6 +12,7 @@ import { TemplateSampleComponent } from './forms/template-sample/template-sample
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './table/table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormArrayComponent } from './forms/form-array/form-array.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NestedFormComponent,
     ReactiveSampleComponent,
     TemplateSampleComponent,
-    TableComponent
+    TableComponent,
+    FormArrayComponent
   ],
   imports: [
     BrowserModule,

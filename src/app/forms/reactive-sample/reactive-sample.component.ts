@@ -7,35 +7,32 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   styleUrls: ['./reactive-sample.component.css']
 })
 export class ReactiveSampleComponent implements OnInit {
-
+ 
 data:any[]=[];
 userForm! :FormGroup ;
 constructor(private fb:FormBuilder){
   this.userForm = this.fb.group({
     nominee : this.fb.array([])
-                })
+                               })
 }
 
 ngOnInit(){
   this.addNominee();
 }
 
-get nominee() {
-  return this.userForm.controls["nominee"] as FormArray;
-}
-
 onSubmit(){
-  debugger;
-  console.log(this.userForm.value.nominee[0].firstName);
-  console.log(this.userForm.value.nominee.value);
-  console.log(this.userForm.value.nominee)
- console.log( '.........'+ this.userForm.value);
- console.log( 'this.data'+this.data);
- console.log( 'this.userForm.controls'+this.userForm);
-//  console.log( 'this.addNominee()'+this.addNominee());
- this.userForm.reset()
+  // debugger;
+  console.log( 'userForm',this.userForm);
+//   console.log( 'userForm val....', this.userForm.value);
+//   console.log("array",this.userForm.value.nominee)
+//   console.log("array val",this.userForm.value.nominee.value);
+//  console.log( 'this.data',this.data);
+//  this.userForm.reset()
  }
 
+ get nominee() {
+  return this.userForm.controls["nominee"] as FormArray;
+}
 
 addNominee() {
   const newNominee =  this.fb.group({
@@ -47,6 +44,8 @@ addNominee() {
                     })
                  });
   this.nominee.push(newNominee);
+  // debugger;
+  // this.userForm.nominee.push(this.nominee)
 }
 
 deleteNominee(index: number) {

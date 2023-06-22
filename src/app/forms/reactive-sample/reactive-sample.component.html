@@ -1,9 +1,10 @@
 <!-- FormArray -->
 
-<form class="row g-3" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<!-- <form class="row g-3" [formGroup]="userForm" (ngSubmit)="onSubmit()" > -->
+<form class="row g-3" [formGroup]="userForm" >
     <!-- array -->
     <div class="col-12 p-3" formArrayName="nominee">
-        <div *ngFor="let newNominee of nominee.controls let i = index">
+        <div *ngFor="let newNominee of nominee.controls; let i = index">
             <div [formGroupName]="i">
                 <h5>Nominee-{{i+1}}</h5>
                 <div class="col-md-6">
@@ -32,20 +33,13 @@
                             <button type="button" class="btn btn-danger m-2" (click)="deleteNominee(i)" *ngIf="i!=0">-</button>
                         </div>
                     </div>
-                    
-
                 </div>
-            </div>
-                    
+            </div>        
         </div>
-                
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>     
-                    </div>
-            
-
+                <div class="col-12">
+                      <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit</button>     
+                </div>
     </div>
-
 </form>
 
 

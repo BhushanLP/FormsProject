@@ -1,0 +1,71 @@
+<p>form-array works!</p>
+<!-- FormArray -->
+
+    <form class="row g-3" [formGroup]="userForm" >
+        <!-- array -->
+        <div class="col-12 p-3" formArrayName="nominee">
+            <div *ngFor="let newNominee of nominee.controls; let i = index">
+                <div [formGroupName]="i">
+                    <h5>Nominee-{{i+1}}</h5>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">First Name</label>
+                        <input formControlName="firstName" type="text" class="form-control">
+                        <!-- validation -->
+                        <!-- <div *ngIf="(nominee.controls[i].get('firstName')?.invalid)">
+                            jhasjgas
+                        </div> -->
+                        <div style="color:red" *ngIf="nominee.controls[i].get('firstName')?.invalid 
+                            && (nominee.controls[i].get('firstName')?.touched || nominee.controls[i].get('firstName')?.dirty)">
+                            <div *ngIf="nominee.controls[i].get('firstName')?.errors?.['required']">
+                                Please enter First Name
+                            </div>
+                            <div *ngIf="nominee.controls[i].get('firstName')?.errors?.['pattern']">
+                                First name should contain only alphabets.
+                            </div>
+                        </div>
+                    </div>
+                    {{nominee.controls[i].get('firstName')?.invalid }}
+                    {{nominee.controls[i].get('firstName')?.touched}}
+                    {{nominee.controls[i].get('firstName')?.dirty}}
+                    <!-- <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Last Name</label>
+                        <input formControlName="lastName" type="text" class="form-control" id="inputPassword4">
+                        <div style="color:red" *ngIf="userForm.controls['lastName'].invalid 
+                            && (userForm.controls['lastName'].touched || userForm.controls['lastName'].dirty)">
+                            <div *ngIf="userForm.controls['lastName'].errors?.['required']">
+                                Please enter Last Name
+                            </div>
+                            <div *ngIf="userForm.controls['lastName'].errors?.['pattern']">
+                                Last name should contain only alphabets.
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- group -->
+                     
+                        <!-- <div class="row">
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Add1</label>
+                                <input formControlName="add1" type="text" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Add2</label>
+                                <input formControlName="add2" type="text" class="form-control">
+                            </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-success m-2" (click)="addNominee()">+</button>
+                                <button type="button" class="btn btn-danger m-2" (click)="deleteNominee(i)" *ngIf="i!=0">-</button>
+                            </div>
+                        </div>
+                    
+                </div>        
+            </div>
+                    <div class="col-12">
+                          <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit</button>     
+                    </div>
+        </div>
+    </form>
+    
+    
+    
