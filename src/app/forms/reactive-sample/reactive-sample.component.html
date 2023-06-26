@@ -1,12 +1,6 @@
-<!-- FormArray -->
 
-<!-- <form class="row g-3" [formGroup]="userForm" (ngSubmit)="onSubmit()" > -->
 <form class="row g-3" [formGroup]="userForm" >
-    <!-- array -->
-    <div class="col-12 p-3" formArrayName="nominee">
-        <div *ngFor="let newNominee of nominee.controls; let i = index">
-            <div [formGroupName]="i">
-                <h5>Nominee-{{i+1}}</h5>
+
                 <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">First Name</label>
                     <input formControlName="firstName" type="text" class="form-control">
@@ -15,31 +9,85 @@
                     <label for="inputEmail4" class="form-label">Last Name</label>
                     <input formControlName="lastName" type="text" class="form-control">
                 </div>
-                <!-- group -->
-                <div class="row" formGroupName="address" >
+                <div class="col-12 p-3">
+                    <label class="form-check-label pe-5">Verification Document</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio"  
+                            formControlName="verificationDoc" name="verificationDoc" id="inlineRadio1" value="adhaar"
+                             (ngModelChange)="checkDocType('adhaar')" >
+                        <label class="form-check-label" for="inlineRadio1">Aadhar</label>      
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" 
+                            formControlName="verificationDoc" name="verificationDoc" id="inlineRadio2" value="pan"  (ngModelChange)="checkDocType('pan')">
+                        <label class="form-check-label" for="inlineRadio2">PAN</label>
+                        
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" (ngModelChange)="checkDocType('passport')"
+                            formControlName="verificationDoc" name="verificationDoc" id="inlineRadio3" value="passport"
+                            (ngModelChange)="checkDocType('passport')">
+                        <label class="form-check-label" for="inlineRadio3">Passport</label>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Add1</label>
-                            <input formControlName="add1" type="text" class="form-control">
+                            <label for="inputEmail4" class="form-label">adhaar</label>
+                            <input formControlName="adhaarNumber" type="text" class="form-control">
+                            <div style="color:red" *ngIf="userForm.controls['adhaarNumber'].invalid 
+                        && (userForm.controls['adhaarNumber'].touched || userForm.controls['adhaarNumber'].dirty)">
+                            <div *ngIf="userForm.controls['adhaarNumber'].errors?.['required']">
+                                Please enter Aadhar Number.
+                            </div>
+                            <div *ngIf="userForm.controls['adhaarNumber'].errors?.['pattern']">
+                                Adhaar should have 12 digits & have white space after every 4 digits.
+                                alphabet,special characters not allowed & It should not start with 0 and 1.
+                            </div>
+                        </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Add2</label>
-                            <input formControlName="add2" type="text" class="form-control">
+                            <label for="inputEmail4" class="form-label">pan</label>
+                            <input formControlName="panNumber" type="text" class="form-control">
+                            <div style="color:red" *ngIf="userForm.controls['panNumber'].invalid 
+                        && (userForm.controls['panNumber'].touched || userForm.controls['panNumber'].dirty)">
+                            <div *ngIf="userForm.controls['panNumber'].errors?.['required']">
+                                Please enter Pan Number.
+                            </div>
+                            <div *ngIf=" userForm.controls['panNumber'].errors?.['pattern']">
+                                It should be ten characters long.
+                                The first five characters should be any upper case alphabets.
+                                The next four-characters should be any number from 0 to 9.
+                                The last(tenth) character should be any upper case alphabet.
+                                It should not contain any white spaces.
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6" >
+                            <label for="passportId" class="form-label">Passport Number</label>
+                            <input formControlName="passportNumber"  type="text" class="form-control" id="passportId"
+                                placeholder="Passport">
+                            <div style="color:red" *ngIf="userForm.controls['passportNumber'].invalid 
+                            && (userForm.controls['passportNumber'].touched || userForm.controls['passportNumber'].dirty)">
+                                
+                                <div *ngIf="userForm.controls['passportNumber'].errors?.['required']">
+                                    Please enter Passport Number.
+                                </div>
+                                <div *ngIf="userForm.controls['passportNumber'].errors?.['pattern']">
+                                    It should be eight characters long.
+                                    The first character should be an uppercase alphabet.
+                                    The next two characters should be a number, but the first character should be any number from 1-9 and the second character should be any number from 0-9.
+                                    It should be zero or one white space character.
+                                    The next four characters should be any number from 0-9.
+                                    The last character should be any number from 1-9.
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-success m-2" (click)="addNominee()">+</button>
-                            <button type="button" class="btn btn-danger m-2" (click)="deleteNominee(i)" *ngIf="i!=0">-</button>
-                        </div>
-                    </div>
+
                 </div>
-            </div>        
-        </div>
+
                 <div class="col-12">
-                      <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit</button>     
+                      <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="userForm.invalid">Submit</button>     
                 </div>
-    </div>
+
 </form>
-
-
