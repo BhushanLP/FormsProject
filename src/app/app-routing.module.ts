@@ -5,6 +5,7 @@ import { ReactiveSampleComponent } from './forms/reactive-sample/reactive-sample
 import { NestedFormComponent } from './forms/nested-form/nested-form.component';
 import { TableComponent } from './table/table.component';
 import { FormArrayComponent } from './forms/form-array/form-array.component';
+import { Comp1Component } from './forms/comp1/comp1.component';
 
 const routes: Routes = [
   
@@ -14,6 +15,7 @@ const routes: Routes = [
     {path: 'formArray', component: FormArrayComponent},
     {path: 'nested', component: NestedFormComponent},
     {path: 'table', component: TableComponent},
+    {path: 'comp1', component: Comp1Component},
   
 ];
 

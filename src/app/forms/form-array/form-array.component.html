@@ -44,18 +44,18 @@
                         <label class="form-check-label pe-5">Verification Document</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio"  (ngModelChange)="checkDocType('adhaar')"
-                                formControlName="verificationDoc" name="verificationDoc" id="inlineRadio1" value="adhaar">
+                                formControlName="selectedDoc" name="selectedDoc" id="inlineRadio1" value="adhaar">
                             <label class="form-check-label" for="inlineRadio1">Aadhar</label>
           
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" (ngModelChange)="checkDocType('pan')"
-                                formControlName="verificationDoc" name="verificationDoc" id="inlineRadio2" value="pan">
+                                formControlName="selectedDoc" name="selectedDoc" id="inlineRadio2" value="pan">
                             <label class="form-check-label" for="inlineRadio2">PAN</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" (ngModelChange)="checkDocType('passport')"
-                                formControlName="verificationDoc" name="verificationDoc" id="inlineRadio3" value="passport">
+                                formControlName="selectedDoc" name="selectedDoc" id="inlineRadio3" value="passport">
                             <label class="form-check-label" for="inlineRadio3">Passport</label>
                         </div>
                     </div>
@@ -75,6 +75,7 @@
                             </div>
                         </div>
                     </div>
+                    
           
                     <div class="col-12" *ngIf="text==='pan'">
                         <label for="panCardId" class="form-label">Pan Number</label>

@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './table/table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormArrayComponent } from './forms/form-array/form-array.component';
+import { Comp1Component } from './forms/comp1/comp1.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormArrayComponent } from './forms/form-array/form-array.component';
     ReactiveSampleComponent,
     TemplateSampleComponent,
     TableComponent,
-    FormArrayComponent
+    FormArrayComponent,
+    Comp1Component
   ],
   imports: [
     BrowserModule,
