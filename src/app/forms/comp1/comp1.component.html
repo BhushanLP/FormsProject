@@ -1,103 +1,6 @@
 <p>comp1 works!</p>
-
-<!-- <form class="row g-3" [formGroup]="userForm" >
-<div formArrayName="nominee" *ngFor="let item of nominee.controls;let i = index">
-    <div [formControlName]="i">
-NOMINEE{{i+1}}
-<div class="col-12 p-3">
-    <label class="form-check-label pe-5">Verification Document</label>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio"  
-            formControlName="selectedDoc" name="selectedDoc" id="inlineRadio1" value="adhaar"
-             (ngModelChange)="checkDocType('adhaar')" >
-        <label class="form-check-label" for="inlineRadio1">Aadhar</label>      
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" 
-            formControlName="selectedDoc" name="selectedDoc" id="inlineRadio2" value="pan" (ngModelChange)="checkDocType('pan')">
-        <label class="form-check-label" for="inlineRadio2">PAN</label>
-        
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" (ngModelChange)="checkDocType('passport')"
-            formControlName="selectedDoc" name="selectedDoc" id="inlineRadio3" value="passport"
-            (ngModelChange)="checkDocType('passport')">
-        <label class="form-check-label" for="inlineRadio3">Passport</label>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6" *ngIf="text==='adhaar'">
-            <label for="inputEmail4" class="form-label">Adhaar</label>
-            <input formControlName="adhaarNumber" type="text" class="form-control">
-            <div style="color:red" *ngIf="nominee.controls[i].get('adhaarNumber')?.invalid 
-        && (nominee.controls[i].get('adhaarNumber')?.touched || nominee.controls[i].get('adhaarNumber')?.dirty)">
-            <div *ngIf="nominee.controls[i].get('adhaarNumber')?.errors?.['required']">
-                Please enter Aadhar Number.
-            </div>
-            <div *ngIf="nominee.controls[i].get('adhaarNumber')?.errors?.['pattern']">
-                Adhaar should have 12 digits & have white space after every 4 digits.
-                alphabet,special characters not allowed & It should not start with 0 and 1.
-            </div>
-        </div>
-        </div>
-        <div class="col-md-6" *ngIf="text==='pan'">
-            <label for="inputEmail4" class="form-label">PAN</label>
-            <input formControlName="panNumber" type="text" class="form-control">
-            <div style="color:red" *ngIf="nominee.controls[i].get('panNumber')?.invalid 
-        && (nominee.controls[i].get('panNumber')?.touched || nominee.controls[i].get('panNumber')?.dirty)">
-            <div *ngIf="nominee.controls[i].get('panNumber')?.errors?.['required']">
-                Please enter Pan Number.
-            </div>
-            <div *ngIf="nominee.controls[i].get('panNumber')?.errors?.['pattern']">
-                It should be ten characters long.
-                The first five characters should be any upper case alphabets.
-                The next four-characters should be any number from 0 to 9.
-                The last(tenth) character should be any upper case alphabet.
-                It should not contain any white spaces.
-            </div>
-        </div>
-        </div>
-        <div class="col-md-6" *ngIf="text==='passport'" >
-            <label for="passportId" class="form-label">Passport</label>
-            <input formControlName="passportNumber"  type="text" class="form-control" id="passportId"
-                placeholder="Passport">
-            <div style="color:red" *ngIf="nominee.controls[i].get('passportNumber')?.invalid 
-            && (nominee.controls[i].get('passportNumber')?.touched || nominee.controls[i].get('passportNumber')?.dirty)">
-                
-                <div *ngIf="nominee.controls[i].get('passportNumber')?.errors?.['required']">
-                    Please enter Passport Number.
-                </div>
-                <div *ngIf="nominee.controls[i].get('passportNumber')?.errors?.['pattern']">
-                    It should be eight characters long.
-                    The first character should be an uppercase alphabet.
-                    The next two characters should be a number, but the first character should be any number from 1-9 and the second character should be any number from 0-9.
-                    It should be zero or one white space character.
-                    The next four characters should be any number from 0-9.
-                    The last character should be any number from 1-9.
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-    </div>
-
-    
-
-    <div class="col-12">
-          <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="userForm.invalid">Submit</button>     
-    </div>
-
-</div>
-
-
-</form> -->
-
-
-
-
 <!-- Your form -->
-<form [formGroup]="beneficiaryForm">
+<!-- <form [formGroup]="beneficiaryForm">
     <div formArrayName="beneficiaries">
       <div *ngFor="let beneficiary of beneficiaries.controls; let i = index">
         <div [formGroupName]="i">
@@ -185,4 +88,153 @@ NOMINEE{{i+1}}
     </div>
     <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="beneficiaryForm.invalid">Submit</button> 
     <button class="btn btn-primary" (click)="addBeneficiary()">Add Beneficiary</button>
-  </form>
+  </form> -->
+
+<form class="row g-3" [formGroup]="userForm">
+    <!-- array -->
+    <div class="col-12 p-3" formArrayName="nominee" *ngFor="let newNominee of nominee.controls; let i = index">
+        <div [formGroupName]="i">
+            <h5>Nominee-{{i+1}}</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">First Name</label>
+                    <input formControlName="firstName" type="text" class="form-control">
+                    <!-- validation -->
+                    <div style="color:red"
+                        *ngIf="nominee.controls[i].get('firstName')?.invalid 
+                                && (nominee.controls[i].get('firstName')?.touched || nominee.controls[i].get('firstName')?.dirty)">
+                        <div *ngIf="nominee.controls[i].get('firstName')?.errors?.['required']">
+                            Please enter First Name
+                        </div>
+                        <div *ngIf="nominee.controls[i].get('firstName')?.errors?.['pattern']">
+                            First name should contain only alphabets.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Last Name</label>
+                    <input formControlName="lastName" type="text" class="form-control" id="inputPassword4">
+                    <!-- validation -->
+                    <div style="color:red"
+                        *ngIf="nominee.controls[i].get('lastName')?.invalid 
+                                && (nominee.controls[i].get('lastName')?.touched || nominee.controls[i].get('lastName')?.dirty)">
+                        <div *ngIf="nominee.controls[i].get('lastName')?.errors?.['required']">
+                            Please enter Last Name
+                        </div>
+                        <div *ngIf="nominee.controls[i].get('lastName')?.errors?.['pattern']">
+                            First name should contain only alphabets.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 p-3">
+                    <label class="form-check-label pe-5">Verification Document</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" (ngModelChange)="checkDocType('adhaar',i)"
+                            formControlName="selectedDoc" name="selectedDoc" id="inlineRadio1" value="adhaar">
+                        <label class="form-check-label" for="inlineRadio1">Aadhar</label>
+
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" (ngModelChange)="checkDocType('pan',i)"
+                            formControlName="selectedDoc" name="selectedDoc" id="inlineRadio2" value="pan">
+                        <label class="form-check-label" for="inlineRadio2">PAN</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" (ngModelChange)="checkDocType('passport',i)"
+                            formControlName="selectedDoc" name="selectedDoc" id="inlineRadio3" value="passport">
+                        <label class="form-check-label" for="inlineRadio3">Passport</label>
+                    </div>
+                </div>
+
+                <div class="col-12" *ngIf="text==='adhaar'">
+                    <label for="adharCardId" class="form-label">Adhar Number</label>
+                    <input formControlName="adhaarNumber" type="text" class="form-control" id="adharCardId"
+                        placeholder="Adhaar">
+                    <div style="color:red"
+                        *ngIf="nominee.controls[i].get('adhaarNumber')?.invalid 
+                        && (nominee.controls[i].get('adhaarNumber')?.touched || nominee.controls[i].get('adhaarNumber')?.dirty)">
+                        <div *ngIf="nominee.controls[i].get('adhaarNumber')?.errors?.['required']">
+                            Please enter Aadhar Number.
+                        </div>
+                        <div *ngIf="nominee.controls[i].get('adhaarNumber')?.errors?.['pattern']">
+                            Adhaar should have 12 digits & have white space after every 4 digits.
+                            alphabet,special characters not allowed & It should not start with 0 and 1.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12" *ngIf="text==='pan'">
+                    <label for="panCardId" class="form-label">Pan Number</label>
+                    <input formControlName="panNumber" type="text" class="form-control" id="panCardId"
+                        placeholder="Pan">
+                    <div style="color:red"
+                        *ngIf="nominee.controls[i].get('panNumber')?.invalid 
+                        && (nominee.controls[i].get('panNumber')?.touched || nominee.controls[i].get('panNumber')?.dirty)">
+                        <div *ngIf="nominee.controls[i].get('panNumber')?.errors?.['required']">
+                            Please enter Pan Number.
+                        </div>
+                        <div *ngIf=" nominee.controls[i].get('panNumber')?.errors?.['pattern']">
+                            It should be ten characters long.
+                            The first five characters should be any upper case alphabets.
+                            The next four-characters should be any number from 0 to 9.
+                            The last(tenth) character should be any upper case alphabet.
+                            It should not contain any white spaces.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12" *ngIf="text==='passport'">
+                    <label for="passportId" class="form-label">Passport Number</label>
+                    <input formControlName="passportNumber" type="text" class="form-control" id="passportId"
+                        placeholder="Passport">
+                    <div style="color:red"
+                        *ngIf="nominee.controls[i].get('passportNumber')?.invalid 
+                        && (nominee.controls[i].get('passportNumber')?.touched || nominee.controls[i].get('passportNumber')?.dirty)">
+                        <div *ngIf="nominee.controls[i].get('passportNumber')?.errors?.['required']">
+                            Please enter Passport Number.
+                        </div>
+                        <div *ngIf="nominee.controls[i].get('passportNumber')?.errors?.['pattern']">
+                            It should be eight characters long.
+                            The first character should be an uppercase alphabet.
+                            The next two characters should be a number, but the first character should be any number
+                            from 1-9 and the second character should be any number from 0-9.
+                            It should be zero or one white space character.
+                            The next four characters should be any number from 0-9.
+                            The last character should be any number from 1-9.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputState" class="form-label">Status</label>
+                    <select formControlName="docStatus" id="inputState" class="form-select">
+                        <option selected></option>
+                        <option *ngFor="let Status of status" innerHTML="docStatus.value">{{Status}}</option>
+                    </select>
+                    <div style="color:red"
+                        *ngIf="nominee.controls[i].get('docStatus')?.invalid 
+                            && (nominee.controls[i].get('docStatus')?.touched || nominee.controls[i].get('docStatus')?.dirty)">
+                        <div *ngIf="nominee.controls[i].get('docStatus')?.errors?.['required']">
+                            Please select an option.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success m-2" (click)="addNominee()">+</button>
+                    <button type="button" class="btn btn-danger m-2" (click)="deleteNominee(i)" *ngIf="i!=0">-</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-12">
+        <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="userForm.invalid">Submit</button>
+        <button class="btn btn-secondary m-2" (click)="resetVal()">Reset</button>
+    </div>
+</form>
+
+{{userForm.value | json}}
