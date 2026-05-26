@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-form-array',
   templateUrl: './form-array.component.html',
   styleUrls: ['./form-array.component.css']
 })
+
 export class FormArrayComponent implements OnInit {
   data: any[] = [];
   showTextbox: boolean = false;
   status = ["Pending", "Rejected", "Completed", "Processing"];
   text = '';
  
-
   userForm!: FormGroup;
-  constructor(private fb: FormBuilder) {
-    this.userForm = this.fb.group({
+  constructor(private fb: FormBuilder, private http: HttpClient) {
+    this.userForm = this.fb.group({ 
       nominee: this.fb.array([])
     })
   }
@@ -129,3 +130,7 @@ export class FormArrayComponent implements OnInit {
 
 
 }
+function inject(HttpClient: any) {
+  throw new Error('Function not implemented.');
+}
+

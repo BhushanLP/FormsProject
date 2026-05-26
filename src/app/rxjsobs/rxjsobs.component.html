@@ -1,0 +1,15 @@
+<p>rxjsobs works!</p>
+<p>CHILD COMPONENT</p>
+
+<select>
+  <option *ngFor="let item of dropdowndata">{{item}}</option>   
+</select>
+
+<button (click)="fun()" [ngStyle]="{ 'background-color': isbtnClicked ? 'lightgray' : 'lightblue' }">Send Data To Parent</button>
+<div  *ngIf="isLoading" class="loader"></div>
+<div class="overlay" *ngIf="isLoading">
+<div class="center">
+        <div diameter=50 mode="indeterminate" color="primary">
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,60 @@
+<p>crud works! for local storage values</p>
+
+<div class="card text-center">
+  <div class="card-header">
+      For Employee Form click    <button type="submit" (click)="onAdd()" class="btn btn-warning ">+Add</button>
+  </div>
+  <div class="card-body" *ngIf="isaddClicked">
+<form [formGroup]="employeeForm">
+  <div class="form-group">
+    <div class="col-6">
+    <!-- <label for="exampleInputEmail1">Name</label> -->
+    <input type="number" formControlName="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Id">
+    <div *ngIf="employeeForm.get('id')?.invalid && (employeeForm.get('id')?.touched || employeeForm.get('id')?.dirty)">
+      <small class="text-danger">Id is required</small>
+    </div>
+    </div>
+
+    </div>
+    <div class="col-6">
+    <input type="text" formControlName="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title">
+    <div *ngIf="employeeForm.get('title')?.invalid && (employeeForm.get('title')?.touched || employeeForm.get('title')?.dirty)">
+      <small class="text-danger">Title is required and must be at least 3 characters long</small>
+    </div>
+
+    </div>
+    <div class="col-6">
+    <input type="text" formControlName="author" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter author">
+
+    </div>
+</form>
+<div style="margin-top: 10px;">
+<button type="submit" [disabled]="employeeForm.invalid" (click)="onSubmit()" class="btn btn-primary p-2 ">{{buttonName}}</button>
+<button type="submit" (click)="onReset()" class="btn btn-secondary m-1">Reset</button>
+<button type="submit" (click)="onCancel()" class="btn btn-danger"m-1>Cancel</button>
+</div>
+
+  </div>
+  <div class="card-footer text-muted">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employeeList">
+      <td>{{employee.id}}</td>
+      <td>{{employee.title}}</td>
+      <td>{{employee.author}}</td>
+      <td><button class="btn btn-primary" (click)="onEdit(employee)">Edit</button></td>
+      <td><button class="btn btn-danger" (click)="onDelete(employee.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+</div>

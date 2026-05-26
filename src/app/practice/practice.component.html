@@ -1,0 +1,52 @@
+<form [formGroup]="todoForm">
+  <div class="form-group">
+    <div class="col-6">
+    <!-- <label for="exampleInputEmail1">Name</label> -->
+    <input type="number" formControlName="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Id">
+    <div *ngIf="todoForm.get('id')?.invalid && (todoForm.get('id')?.touched || todoForm.get('id')?.dirty)">
+      <small class="text-danger">Id is required</small>
+    </div>
+    </div>
+    <div class="col-6">
+    <!-- <label for="exampleInputEmail1">Name</label> -->
+    <input type="number" formControlName="userId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter userId">
+    <div *ngIf="todoForm.get('userId')?.invalid && (todoForm.get('userId')?.touched || todoForm.get('userId')?.dirty)">
+      <small class="text-danger">User ID is required</small>
+    </div>
+    </div>
+
+    </div>
+    <div class="col-6">
+    <input type="text" formControlName="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title">
+    <div *ngIf="todoForm.get('title')?.invalid && (todoForm.get('title')?.touched || todoForm.get('title')?.dirty)">
+      <small class="text-danger">Title is required and must be at least 3 characters long</small>
+    </div>
+
+    </div>
+    <div class="col-6">
+    <input type="text" formControlName="completed" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter author">
+
+    </div>
+</form>
+<button style="margin-top: 10px;" type="submit" [disabled]="todoForm.invalid" (click)="onSubmit()" class="btn btn-primary p-2 ">{{btnName}}</button>
+<!-- <button type="submit" (click)="onReset()" class="btn btn-secondary m-1">Reset</button>
+<button type="submit" (click)="onCancel()" class="btn btn-danger m-1">Cancel</button>     -->
+
+<table class="table" style="margin-top: 10px;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of todoList,let i =index">
+      <td>{{i + 1}}</td>
+      <td>{{todo.title}}</td>
+      <td>{{todo.completed}}</td>
+      <td><button class="btn btn-sm btn-primary" (click)="onEdit(todo)">Edit</button></td>
+      <td><button class="btn btn-sm btn-danger" (click)="onDelete(todo.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

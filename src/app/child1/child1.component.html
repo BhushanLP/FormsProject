@@ -1,0 +1,11 @@
+<p>child1 works!</p>
+{{dataFromParent}}
+
+
+<hr>
+<p>Enable here</p>
+<button [disabled]="btnDisabled">AAAAA</button>
+<p>Disable here using property binding</p>
+<button [disabled]="!btnDisabled">BBBBB</button>
+<p>Disable here using interpolation</p>
+<button [disabled]="'{{btnDisabled}}'">ccccc</button>

@@ -1,0 +1,15 @@
+{
+  "posts": [],
+  "comments": [],
+  "todos": [
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+  }],
+  "profile": {
+    "name": "typicode"
+  },
+  "$schema": "./node_modules/json-server/schema.json"
+}

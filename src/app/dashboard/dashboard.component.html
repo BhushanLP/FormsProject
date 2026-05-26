@@ -1,0 +1,84 @@
+<p>dashboard works!</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-6 shadow-sm">
+        <div class="card-body">
+          <app-rxjsobs [dropdowndata]="dashboardDropdown" (eventFromChild)="getChildData($event)"></app-rxjsobs>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-6 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Parent Component</h5>
+          <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Title</th>
+      <th scope="col">Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of showTableData, let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{data.id}}</td>
+      <td>{{data.title}}</td>
+      <td>{{data.completed}}</td>
+    </tr>
+    <tr>
+  </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+  <div formArrayName="skills">
+    <div *ngFor="let skill of skills.controls; let i = index">
+      <input [formControlName]="i" placeholder="Enter skill">
+      <button type="button" (click)="removeSkill(i)">
+        Remove
+      </button>
+    </div>
+  </div>
+  <button type="button" (click)="addSkill()">
+    Add Skill
+  </button>
+  <button type="submit">
+    Submit
+  </button>
+</form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <br><br>
+  <form [formGroup]="userForm" (ngSubmit)="submitUser()">
+    <input type="text" formControlName="name" placeholder="Name">
+    <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+      <small class="form-text text-danger" *ngIf="userForm.get('name')?.errors?.['required']">
+        Name is required.
+      </small>
+      <small class="form-text text-danger" *ngIf="userForm.get('name')?.errors?.['minlength']">
+        Name must be at least 3 characters long.
+      </small>
+    </div>
+    <input type="email" formControlName="email" placeholder="Email">
+    <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+      <small class="form-text text-danger" *ngIf="userForm.get('email')?.errors?.['required']">
+        Email is required.
+      </small>
+      <small class="form-text text-danger" *ngIf="userForm.get('email')?.errors?.['email']">
+        Please enter a valid email.
+      </small>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
