@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray, FormGroupName } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -9,7 +10,14 @@ import { FormBuilder, FormGroup, Validators, FormArray, FormGroupName } from '@a
 export class TableComponent {
 myForm : FormGroup;
 
-constructor(private fb:FormBuilder){
+constructor(private fb:FormBuilder, private route: ActivatedRoute){
+
+  this.route.queryParamMap.subscribe(params => {
+  console.log(params.get('page'));
+  console.log(params.get('search'));
+
+});
+
 
   this.myForm = this.fb.group({
     name: ['',[Validators.required,Validators.minLength(3)]],
@@ -38,6 +46,7 @@ onEmailremove(){
 }
 onSubmit(){
   console.log(this.myForm.value);
+  
 }
 
 }

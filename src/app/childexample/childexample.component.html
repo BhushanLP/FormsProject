@@ -1,0 +1,19 @@
+<p>childexample works!</p>
+{{hero}}
+<button (click)="onClick()">Click me</button>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <label>name</label>
+                <input formControlName="name">
+                <span *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched">Name is required and should be at least 3 characters long</span>
+                <label>email</label>
+                <input formControlName="email">
+                <span *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched">Please enter a valid email address</span>
+<button type="submit" [disabled]="userForm.invalid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

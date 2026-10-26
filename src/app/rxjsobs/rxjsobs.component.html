@@ -13,3 +13,12 @@
         </div>
       </div>
     </div>
+    <div class="container">
+      <div class="row">
+        
+        <button type="button" class="btn btn-primary" (click)="increment()">Increment</button>
+        <h1>{{counterVal$ |async}}</h1>
+        <button type="button" class="btn btn-secondary" (click)="decrement()">Decrement</button>
+    </div>
+</div>
+

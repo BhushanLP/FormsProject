@@ -1,6 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SharedService } from '../shared.service';
+import { select, Store } from '@ngrx/store';
+import { decrement, increment } from 'store/counter.action';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-rxjsobs',
@@ -14,7 +16,11 @@ export class RxjsobsComponent implements OnInit  {
 isbtnClicked:boolean = false;
  @Output() eventFromChild:EventEmitter<any> = new EventEmitter();
  apiData:any;
-  constructor(private service:SharedService) {
+
+counterVal$ : Observable<number> = new Observable<number>();
+
+  constructor(private service:SharedService, private store:Store<any>,) {  
+    this.counterVal$ = this.store.pipe(select('bhushan'));
   }
 
 ngOnInit(){
@@ -38,6 +44,12 @@ this.isLoading = true;
     });
 
 }
+  increment() {
+    this.store.dispatch(increment());
+  }
 
+  decrement() {
+    this.store.dispatch(decrement());
+  }
 
 }

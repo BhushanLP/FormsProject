@@ -3,6 +3,7 @@ li  {
     /* margin-top: 20px; */
     margin-left: 50px;
     cursor: pointer;
+        padding: 10px;
 }
 
 a{
@@ -27,4 +28,38 @@ div{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    flex-wrap: wrap;
+}
+.app-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+app-forms{
+    flex:1;
+}
+
+.app-box{ 
+    background-color: #fcfcfc;
+    min-height: 500px;
+    width: 60%;
+    border-radius: 1px;
+    display: flex;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+}
+
+/* stretch all div to full length */
+.app-box div{    
+    width: 100%;
+}
+.form-container{
+    display: flex;
+    justify-content: center;    
+    padding: 20px;
+    /* background-color: #e4b3b3; */
+    /* background-image: linear-gradient(red, rgb(243, 169, 169)); */
+      
+
 }

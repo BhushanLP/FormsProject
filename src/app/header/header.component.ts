@@ -1,4 +1,6 @@
 import { Component, signal } from '@angular/core';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
 
 interface Todo {
   id: number;
@@ -17,6 +19,12 @@ export class HeaderComponent {
 
 todos: Todo[] = [];
   newTodo = '';
+
+  counterVal$ : Observable<number> = new Observable<number>();
+
+constructor(private store:Store<any>,) {  
+    this.counterVal$ = this.store.pipe(select('bhushan'));
+  }
 
   addTodo() {
     const value = this.newTodo.trim();

@@ -16,7 +16,11 @@ export class SharedService {
   }
 
   constructor(private http: HttpClient) { }
-
+  getUsers() {
+    return this.http.get<any[]>(
+      'https://jsonplaceholder.typicode.com/users'
+    );
+  }
   getTableData(){
     return this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos').pipe(map((data:any[])=>{
       return data.slice(0,5);

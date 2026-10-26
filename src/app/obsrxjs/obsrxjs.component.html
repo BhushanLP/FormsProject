@@ -1,0 +1,11 @@
+<p>obsrxjs works!</p>
+
+<p>User ID: {{ userId }}</p>
+
+<button (click)="obscall()">Subscribe</button>
+<br>
+<a [routerLink]="['/header/OBSRXJS', 101]">Route Param User 101</a>  
+<br>
+<a [routerLink]="['/header/OBSRXJS', 102]">Route Param User 102</a>
+
+{{user | json}}

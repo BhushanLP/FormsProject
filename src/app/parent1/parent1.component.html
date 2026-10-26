@@ -1,3 +1,19 @@
 <p>parent1 works!</p>
-<app-child1 [dataFromParent]="fromParent" (fromChild)="fromChildFun($event)"></app-child1> 
+<!-- <app-child1 [dataFromParent]="fromParent" (fromChild)="fromChildFun($event)"></app-child1>  -->
 {{childData}}
+
+<button (click)="loadUsers()">
+  Load Users
+</button>
+
+<div *ngFor="let user of users$ | async">
+  {{ user.name }}
+</div>
+
+<div class="container">
+  <div class="row" style="display: none;">
+    <app-footer></app-footer>
+  </div>
+  {{childData}}
+</div>
+

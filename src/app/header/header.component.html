@@ -1,20 +1,43 @@
+
+
+<div class="app-container">
 <div >
     <ul class="header">
-      <li><a [routerLink]="['/template']">Template Driven</a> </li>
-      <li><a [routerLink]="['/reactive']">Reactive</a></li>
-      <li><a [routerLink]="['/formArray']">Form Arrays</a></li>
-      <li><a [routerLink]="['/nested']">Nested</a></li>
-      <li><a [routerLink]="['/table']">Table</a></li>
-      <li><a [routerLink]="['/comp1']">comp1</a></li>
-      <li><a [routerLink]="['/crud']">CRUD</a></li>
-      <li><a [routerLink]="['/rxjsobs']">RxJS Observables</a></li>
-      <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
-      <li><a [routerLink]="['/inout']">In/OUT</a></li>
-      <li><a [routerLink]="['/card']">CARD</a></li>
-      <li><a [routerLink]="['/practice']">Practice</a></li>
+      <li><a [routerLink]="['/header/OBSRXJS',111]" [queryParams]="{ tab: 'profile' ,page:2}">OBSRXJS</a></li>
+      <li><a [routerLink]="['/header/parentEx']">Parent Example</a></li>
+      <li><a [routerLink]="['/header/childEx']">Child Example</a></li>
+      <li><a [routerLink]="['/header/template']">Template Driven</a> </li>
+      <li><a [routerLink]="['/header/reactive']">Reactive</a></li>
+      <li><a [routerLink]="['/header/formArray']">Form Arrays</a></li>
+      <li><a [routerLink]="['/header/nested']">Nested</a></li>
+      <li><a [routerLink]="['/header/table']"   [queryParams]="{
+    page: 2,
+    search: 'bhushan'
+  }">Table</a></li>
+      <li><a [routerLink]="['/header/comp1']">comp1</a></li>
+      <li><a [routerLink]="['/header/crud']">CRUD {{ counterVal$ | async }}</a></li>
+      <li><a [routerLink]="['/header/rxjsobs']">RxJS Observables</a></li>
+      <li><a [routerLink]="['/header/dashboard']">Dashboard</a></li>
+      <li><a [routerLink]="['/header/inout']">In/OUT</a></li>
+      <li><a [routerLink]="['/header/card']">CARD</a></li>
+      <li><a [routerLink]="['/header/practice']">Practice</a></li>
+      <li><a [routerLink]="['/header/signal']">Signal</a></li>
+      <li><a [routerLink]="['/header/child1']">Child1</a></li>
+      <li><a [routerLink]="['/header/bhushan']">Bhushan</a></li>
+      <li><a [routerLink]="['/header/vaish']">Vaish</a></li>
+      <button [routerLink]="['/test']">Logout</button>
     </ul>
   </div>
-
+  <!-- <app-forms></app-forms> -->
+   <div class="form-container">
+    <div class="app-box">
+         <div>
+             <router-outlet></router-outlet>
+         </div>        
+    </div>   
+ </div>
+  <app-footer></app-footer>
+</div>
   <!-- <div class="todo-container">
   <h2>Todo List</h2>
 
